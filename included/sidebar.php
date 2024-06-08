@@ -58,9 +58,9 @@
 				</a>
 			</li>
 			<li class="active-pro">
-				<a href="./upgrade.html">
-					<i class="nc-icon nc-spaceship"></i>
-					<p>Upgrade to PRO</p>
+				<a href="logout">
+					<i class="nc-icon text-danger nc-button-power"></i>
+					<p class="text-danger">Logout</p>
 				</a>
 			</li>
 		</ul>
