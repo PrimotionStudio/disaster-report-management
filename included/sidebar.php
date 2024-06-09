@@ -34,9 +34,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="./notifications.html">
-					<i class="nc-icon nc-bell-55"></i>
-					<p>Notifications</p>
+				<a href="analysis">
+					<i class="nc-icon nc-chart-bar-32"></i>
+					<p>Analysis</p>
 				</a>
 			</li>
 			<li>
