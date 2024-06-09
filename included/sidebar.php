@@ -16,15 +16,15 @@
 	<div class="sidebar-wrapper">
 		<ul class="nav">
 			<li>
-				<a href="./dashboard.html">
+				<a href="index">
 					<i class="nc-icon nc-bank"></i>
 					<p>Dashboard</p>
 				</a>
 			</li>
 			<li>
-				<a href="./icons.html">
-					<i class="nc-icon nc-diamond"></i>
-					<p>Icons</p>
+				<a href="disaster-entry">
+					<i class="nc-icon nc-ambulance"></i>
+					<p>Disaster Entry</p>
 				</a>
 			</li>
 			<li>
