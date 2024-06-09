@@ -21,7 +21,7 @@ const PAGE_TITLE = "Disaster Entry";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-require_once "func/login.php";
+require_once "func/disaster-entry.php";
 ?>
 <div class="wrapper ">
   <?php
@@ -39,19 +39,20 @@ require_once "func/login.php";
           <div class="card card-user">
             <div class="card-header">
               <h5 class="card-title">Report Disaster</h5>
+              <sub>* indicates a required field</sub>
             </div>
             <div class="card-body">
-              <f>
+              <form action="" method="post">
                 <div class="row">
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
-                      <label>Date and Time of the Event</label>
-                      <input type="datetime-local" class="form-control" required>
+                      <label>Date and Time of the Event*</label>
+                      <input type="datetime-local" class="form-control" name="datetime" required>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
-                      <label>Type of Disaster</label>
+                      <label>Type of Disaster*</label>
                       <select name="disaster" class="form-control">
                         <option value="Fire">Fire</option>
                         <option value="Tornado">Tornado</option>
@@ -72,66 +73,32 @@ require_once "func/login.php";
                   <div class="col-12">
                     <div class="form-group">
                       <label>Severity: <span id="value">5</span></label>
-                      <input type="range" id="severity" class="form-control-range" min="0" max="10">
+                      <input type="range" id="severity" name="severity" class="form-control-range" min="1" max="10">
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Location</label>
-                      <input type="text" class="form-control" placeholder="" value="">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6 pr-1">
-                    <div class="form-group">
-                      <label>First Name</label>
-                      <input type="text" class="form-control" placeholder="Company" value="Chet">
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-1">
-                    <div class="form-group">
-                      <label>Last Name</label>
-                      <input type="text" class="form-control" placeholder="Last Name" value="Faker">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4 pr-1">
-                    <div class="form-group">
-                      <label>City</label>
-                      <input type="text" class="form-control" placeholder="City" value="Melbourne">
-                    </div>
-                  </div>
-                  <div class="col-md-4 px-1">
-                    <div class="form-group">
-                      <label>Country</label>
-                      <input type="text" class="form-control" placeholder="Country" value="Australia">
-                    </div>
-                  </div>
-                  <div class="col-md-4 pl-1">
-                    <div class="form-group">
-                      <label>Postal Code</label>
-                      <input type="number" class="form-control" placeholder="ZIP Code">
+                      <label>Location*</label>
+                      <input type="text" class="form-control" placeholder="Describe the location where this incident has happened" name="location">
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>About Me</label>
-                      <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
+                      <label>Description</label>
+                      <textarea class="form-control textarea" name="description" placeholder="Write a description of the incident to enable the emergency responder better understand the situation"></textarea>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="update ml-auto mr-auto">
-                    <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
+                    <button type="submit" class="btn btn-primary btn-round">Report</button>
                   </div>
                 </div>
-                </form>
+              </form>
             </div>
           </div>
         </div>

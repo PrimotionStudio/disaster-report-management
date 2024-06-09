@@ -23,14 +23,14 @@
 			</li>
 			<li>
 				<a href="disaster-entry">
-					<i class="nc-icon nc-ambulance"></i>
+					<i class="nc-icon nc-sound-wave"></i>
 					<p>Disaster Entry</p>
 				</a>
 			</li>
 			<li>
-				<a href="./map.html">
-					<i class="nc-icon nc-pin-3"></i>
-					<p>Maps</p>
+				<a href="disasters">
+					<i class="nc-icon nc-single-copy-04"></i>
+					<p>Disasters</p>
 				</a>
 			</li>
 			<li>

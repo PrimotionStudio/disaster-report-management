@@ -3,7 +3,6 @@
 if (isset($_SESSION["alert"])) {
 ?>
     <style>
-        /* Modal Styles */
         .mdl {
             font-family: sans-serif;
             display: none;
@@ -16,7 +15,6 @@ if (isset($_SESSION["alert"])) {
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
         }
-
         .mc {
             background-color: white;
             margin: auto;
@@ -27,35 +25,29 @@ if (isset($_SESSION["alert"])) {
             width: 50%;
             max-width: 300px;
         }
-
         .mh {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         .mt {
             font-size: 20px;
             font-weight: bold;
             margin: 0;
         }
-
         .mbd {
             margin-top: 20px;
             margin-bottom: 20px;
         }
-
         .mtxt {
             text-align: center;
             font-size: 16px;
         }
-
         .mft {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         .mcb {
             background-color: #51cbce;
             color: white;
@@ -65,8 +57,6 @@ if (isset($_SESSION["alert"])) {
             font-size: 16px;
             cursor: pointer;
         }
-
-        /* Modal Trigger Styles */
         .mdt {
             background-color: #51cbce;
             color: white;
@@ -76,13 +66,10 @@ if (isset($_SESSION["alert"])) {
             font-size: 16px;
             cursor: pointer;
         }
-
-        /* Show Modal */
         .mdl.show {
             display: block;
         }
     </style>
-    <!-- Modal -->
     <div id="md" class="mdl show">
         <div class="mc">
             <div class="mh">
