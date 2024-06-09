@@ -35,7 +35,9 @@ const PAGE_TITLE = "Disaster Details";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-$get_disaster = mysqli_fetch_assoc($query_disaster)
+$get_disaster = mysqli_fetch_assoc($query_disaster);
+
+require_once "func/disaster-details.php";
 ?>
 <div class="wrapper ">
   <?php
@@ -104,13 +106,13 @@ $get_disaster = mysqli_fetch_assoc($query_disaster)
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Affected Areas/Population</label>
-                      <textarea class="form-control textarea" name="affected" cols="30" rows="20" placeholder="Describe the area/population affected by this disaster"></textarea>
+                      <textarea class="form-control textarea" name="affected" cols="30" rows="20" placeholder="Describe the area/population affected by this disaster"><?= $get_disaster["affected"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Damages/Losses</label>
-                      <textarea class="form-control textarea" name="damages" cols="30" rows="20" placeholder="Describe the losses/damages done by this disaster"></textarea>
+                      <textarea class="form-control textarea" name="damages" cols="30" rows="20" placeholder="Describe the losses/damages done by this disaster"><?= $get_disaster["damages"] ?></textarea>
                     </div>
                   </div>
                 </div>
@@ -118,13 +120,13 @@ $get_disaster = mysqli_fetch_assoc($query_disaster)
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Response Effort</label>
-                      <textarea class="form-control textarea" name="response" cols="30" rows="20" placeholder="Describe the response and effort made to tackle the disaster"></textarea>
+                      <textarea class="form-control textarea" name="response" cols="30" rows="20" placeholder="Describe the response and effort made to tackle the disaster"><?= $get_disaster["response"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Casualties and Injuries</label>
-                      <textarea class="form-control textarea" name="casualties" cols="30" rows="20" placeholder="Describe the casualties of this disaster"></textarea>
+                      <textarea class="form-control textarea" name="casualties" cols="30" rows="20" placeholder="Describe the casualties of this disaster"><?= $get_disaster["casualties"] ?></textarea>
                     </div>
                   </div>
                 </div>
