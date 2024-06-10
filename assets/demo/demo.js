@@ -240,7 +240,7 @@ demo = {
       }
     });
 
-    var speedCanvas = document.getElementById("speedChart");
+    var speedCanvas = document.getElementById("_speedChart");
 
     var dataFirst = {
       data: [0, 19, 15, 20, 30, 40, 40, 50, 25, 30, 50, 70],

@@ -54,15 +54,12 @@ require_once "func/disaster-entry.php";
                     <div class="form-group">
                       <label>Type of Disaster*</label>
                       <select name="disaster" class="form-control">
-                        <option value="Fire">Fire</option>
                         <option value="Tornado">Tornado</option>
                         <option value="Earthquake">Earthquake</option>
                         <option value="Hurricane">Hurricane</option>
                         <option value="Volcano">Volcano</option>
                         <option value="Flood">Flood</option>
-                        <option value="Tsunami">Tsunami</option>
                         <option value="Landslide">Landslide</option>
-                        <option value="Drought">Drought</option>
                         <option value="Wildfire">Wildfire</option>
                         <option value="Other">Other</option>
                       </select>
