@@ -19,32 +19,41 @@
 		$disasters[$type] = $severity;
 	}
 	$colors = ['51cbce', '6c757d', '6bd098', 'ef8157', 'fbc658', '51bcda', '212529', '343a40'];
+	$x = 0;
+	foreach ($disasters as $type => $disaster) {
 	?>
-	var dataFirst = {
-		data: [0, 19, 15, 20, 30, 40, 40, 50, 25, 30, 50, 70],
-		fill: false,
-		borderColor: '#fbc658',
-		backgroundColor: 'transparent',
-		pointBorderColor: '#fbc658',
-		pointRadius: 4,
-		pointHoverRadius: 4,
-		pointBorderWidth: 8,
-	};
-
-	var dataSecond = {
-		data: [0, 5, 10, 12, 20, 27, 30, 34, 42, 45, 55, 63],
-		fill: false,
-		borderColor: '#51CACF',
-		backgroundColor: 'transparent',
-		pointBorderColor: '#51CACF',
-		pointRadius: 4,
-		pointHoverRadius: 4,
-		pointBorderWidth: 8
-	};
+		var <?= $type ?> = {
+			data: [<?php
+					foreach ($disaster as $i => $sever) {
+						if ($i != 0) {
+							echo ", ";
+						}
+						echo $sever;
+					}
+					?>],
+			fill: false,
+			borderColor: '#<?= $colors[$x] ?>',
+			backgroundColor: 'transparent',
+			pointBorderColor: '#<?= $colors[$x] ?>',
+			pointRadius: 4,
+			pointHoverRadius: 4,
+			pointBorderWidth: 8,
+		};
+	<?php
+		$x++;
+	}
+	?>
 
 	var speedData = {
 		labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-		datasets: [dataFirst, dataSecond]
+		datasets: [<?php
+					foreach ($disaster_types as $i => $type) {
+						if ($i != 0) {
+							echo ", ";
+						}
+						echo $type;
+					}
+					?>]
 	};
 
 	var chartOptions = {

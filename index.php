@@ -21,7 +21,7 @@ const PAGE_TITLE = "Disaster Report Management System";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-$select_disasters = "SELECT * FROM disasters ORDER BY id DESC";
+$select_disasters = "SELECT * FROM disasters";
 $query_disasters = mysqli_query($con, $select_disasters);
 $disaster_types = [];
 while ($get_disaster = mysqli_fetch_assoc($query_disasters)) {
@@ -69,29 +69,59 @@ require_once "func/login.php";
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="card ">
-            <div class="card-header ">
-              <h5 class="card-title">Users Behavior</h5>
-              <p class="card-category">24 Hours performance</p>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Reported Disasters</h4>
             </div>
-            <div class="card-body ">
-              <canvas id="speedChart" width="400" height="100"></canvas>
-            </div>
-            <div class="card-footer ">
-              <div class="chart-legend">
-                <?php
-                $bootstrap_colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'body', 'dark'];
-                foreach ($disaster_types as $i => $type) :
-                  $color = $bootstrap_colors[$i];
-                ?>
-                  <i class="fa fa-circle text-<?= $color ?>"></i> <?= $type ?>
-                <?php
-                endforeach;
-                ?>
-              </div>
-              <hr />
-              <div class="card-stats">
-                <i class="fa fa-check"></i> Data information verified
+            <div class="card-body">
+              <div class="">
+                <table class="table table-hover">
+                  <thead class="text-primary">
+                    <th>
+                      Disaster Type
+                    </th>
+                    <th>
+                      Severity
+                    </th>
+                    <th>
+                      Location
+                    </th>
+                    <th>
+                      Event Date/Time
+                    </th>
+                    <th class="text-right">
+                      Action
+                    </th>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $query_disasters = mysqli_query($con, $select_disasters);
+                    while ($get_disaster = mysqli_fetch_assoc($query_disasters)) :
+                    ?>
+                      <tr>
+                        <td>
+                          <?= $get_disaster["disaster"] ?>
+                        </td>
+                        <td>
+                          <?= $get_disaster["severity"] ?>
+                        </td>
+                        <td>
+                          <?= $get_disaster["location"] ?>
+                        </td>
+                        <td>
+                          <?= date('d, M Y - h:iA', strtotime($get_disaster["event_datetime"])) ?>
+                        </td>
+                        <td class="text-right">
+                          <a href="disaster-details?id=<?= $get_disaster["id"] ?>" title="more">
+                            <i class="nc-icon nc-minimal-right"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    <?php
+                    endwhile;
+                    ?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
