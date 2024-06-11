@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 require_once "required/session.php";
 require_once "required/sql.php";
 require_once "required/validate.php";
-const PAGE_TITLE = "Disaster Report Management System";
+const PAGE_TITLE = "Anaysis";
 include_once "included/head.php";
 require_once "included/alert.php";
 
@@ -27,7 +27,7 @@ $disaster_types = [];
 while ($get_disaster = mysqli_fetch_assoc($query_disasters)) {
   $disaster_types[] = $get_disaster["disaster"];
 }
-
+$disaster_types = array_unique($disaster_types);
 require_once "func/login.php";
 ?>
 <div class="wrapper ">
@@ -78,6 +78,37 @@ require_once "func/login.php";
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Reported Severity/Occurances</h4>
+            </div>
+            <div class="card-body">
+            <canvas id="sever_occur" width="507" height="126"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <?php
+      foreach ($disaster_types as $type):
+      ?>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"><?= ucfirst($type) ?> Severity</h4>
+            </div>
+            <div class="card-body">
+            <canvas id="<?= $type ?>_chart" width="507" height="126"></canvas>
+            </div>
+          </div>
+        </div>
+      <?php
+      endforeach;
+      ?>
       </div>
       <div class="row">
         <div class="col-md-12">
