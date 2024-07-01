@@ -39,24 +39,6 @@
 					<p>Analysis</p>
 				</a>
 			</li>
-			<li>
-				<a href="./user.html">
-					<i class="nc-icon nc-single-02"></i>
-					<p>User Profile</p>
-				</a>
-			</li>
-			<li>
-				<a href="./tables.html">
-					<i class="nc-icon nc-tile-56"></i>
-					<p>Table List</p>
-				</a>
-			</li>
-			<li>
-				<a href="./typography.html">
-					<i class="nc-icon nc-caps-small"></i>
-					<p>Typography</p>
-				</a>
-			</li>
 			<li class="active-pro">
 				<a href="logout">
 					<i class="nc-icon text-danger nc-button-power"></i>

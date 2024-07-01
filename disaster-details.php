@@ -105,14 +105,14 @@ require_once "func/disaster-details.php";
                 <div class="row">
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
-                      <label>Affected Areas/Population</label>
-                      <textarea class="form-control textarea" name="affected" cols="30" rows="20" placeholder="Describe the area/population affected by this disaster"><?= $get_disaster["affected"] ?></textarea>
+                      <label>Affected Population</label>
+                      <textarea class="form-control textarea" name="affected" cols="30" rows="20" placeholder="Number of people affected"><?= $get_disaster["affected"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
-                      <label>Damages/Losses</label>
-                      <textarea class="form-control textarea" name="damages" cols="30" rows="20" placeholder="Describe the losses/damages done by this disaster"><?= $get_disaster["damages"] ?></textarea>
+                      <label>Extent of Damages</label>
+                      <textarea class="form-control textarea" name="damages" cols="30" rows="20" placeholder="Extent of damages done"><?= $get_disaster["damages"] ?></textarea>
                     </div>
                   </div>
                 </div>
@@ -120,14 +120,20 @@ require_once "func/disaster-details.php";
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Response Effort</label>
-                      <textarea class="form-control textarea" name="response" cols="30" rows="20" placeholder="Describe the response and effort made to tackle the disaster"><?= $get_disaster["response"] ?></textarea>
+                      <textarea class="form-control textarea" name="response" cols="30" rows="20" placeholder="Has relieve materials been sent by government officials the response and effort made to tackle the disaster"><?= $get_disaster["response"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
-                      <label>Casualties and Injuries</label>
-                      <textarea class="form-control textarea" name="casualties" cols="30" rows="20" placeholder="Describe the casualties of this disaster"><?= $get_disaster["casualties"] ?></textarea>
+                      <label>Casualties and Compensation</label>
+                      <textarea class="form-control textarea" name="casualties" cols="30" rows="20" placeholder="Were the relieve materials enough"><?= $get_disaster["casualties"] ?></textarea>
                     </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="media">Pictures</label>
+                    <input type="file" name="media" id="media" multiple>
                   </div>
                 </div>
                 <div class="row">
