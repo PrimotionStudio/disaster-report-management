@@ -1,11 +1,11 @@
-<footer class="footer footer-black  footer-white ">
+<footer class="footer footer-black footer-white ">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="credits ml-auto">
 				<span class="copyright">
 					&copy; <script>
 						document.write(new Date().getFullYear())
-					</script>, made with <i class="fa fa-heart heart"></i> by The Primotion Studio
+					</script>, Frontend and Backend made with <i class="fa fa-heart heart"></i> by Creative Tim and The Primotion Studio respectively
 				</span>
 			</div>
 		</div>

@@ -67,18 +67,24 @@ require_once "func/login.php";
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">Reported Occurances</h4>
-            </div>
-            <div class="card-body">
-            <canvas id="occurance" width="507" height="126"></canvas>
+      <?php
+      if ($get_user["account_type"] === ACCOUNT_TYPES[2]) :
+      ?>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Reported Occurances</h4>
+              </div>
+              <div class="card-body">
+                <canvas id="occurance" width="507" height="126"></canvas>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <?php
+      endif;
+      ?>
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -89,6 +95,7 @@ require_once "func/login.php";
               <div class="">
                 <table class="table table-hover">
                   <thead class="text-primary">
+                    <th>s/n</th>
                     <th>
                       Disaster Type
                     </th>
@@ -108,9 +115,11 @@ require_once "func/login.php";
                   <tbody>
                     <?php
                     $query_disasters = mysqli_query($con, $select_disasters);
+                    $i = 1;
                     while ($get_disaster = mysqli_fetch_assoc($query_disasters)) :
                     ?>
                       <tr>
+                        <td><?= $i ?></td>
                         <td>
                           <?= $get_disaster["disaster"] ?>
                         </td>
@@ -130,6 +139,7 @@ require_once "func/login.php";
                         </td>
                       </tr>
                     <?php
+                      $i++;
                     endwhile;
                     ?>
                   </tbody>

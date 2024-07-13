@@ -1,4 +1,5 @@
 <?php
+const ACCOUNT_TYPES = ['Government Official', 'Community Member', 'Emergency Responder'];
 // Validate a users login
 if (isset($_SESSION["loginkey"]) && isset($_SESSION["user_id"])) {
 	$user_id = $_SESSION["user_id"];
@@ -7,6 +8,8 @@ if (isset($_SESSION["loginkey"]) && isset($_SESSION["user_id"])) {
 	$query_user = mysqli_query($con, $select_user);
 	if (mysqli_num_rows($query_user) != 0) {
 		// Login Validated
+		$get_user = mysqli_fetch_assoc($query_user);
+
 	} else {
 		$_SESSION["alert"] = "Session expired, please login again";
 		header("location: login");

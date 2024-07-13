@@ -44,7 +44,15 @@ require_once "func/register.php";
 							<input type="tel" class="form-control" placeholder="Phone" name="phone" required />
 						</div>
 						<div class="form-group">
-							<label>Password</label>
+							<label>Account Type</label>
+							<select name="account_type" class="form-control">
+								<option value="Community Member">Community Member</option>
+								<option value="Emergency Responder">Emergency Responder</option>
+								<option value="Government Official">Government Official</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<lael>Password</label>
 							<input type="password" class="form-control" placeholder="Password" name="password" required />
 						</div>
 						<div class="row">

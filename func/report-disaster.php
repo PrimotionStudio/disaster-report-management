@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		header("location: disasters");
 	} else {
 		$_SESSION["alert"] = "Error while reporting disaster";
-		header("location: disaster-entry");
+		header("location: report-disaster");
 	}
 	exit;
 }

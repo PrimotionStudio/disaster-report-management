@@ -21,7 +21,7 @@ const PAGE_TITLE = "Disaster Entry";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-require_once "func/disaster-entry.php";
+require_once "func/report-disaster.php";
 ?>
 <div class="wrapper ">
   <?php

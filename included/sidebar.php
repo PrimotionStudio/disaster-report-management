@@ -21,18 +21,36 @@
 					<p>Dashboard</p>
 				</a>
 			</li>
-			<li>
-				<a href="disaster-entry">
-					<i class="nc-icon nc-sound-wave"></i>
-					<p>Disaster Entry</p>
-				</a>
-			</li>
-			<li>
-				<a href="disasters">
-					<i class="nc-icon nc-single-copy-04"></i>
-					<p>Disasters</p>
-				</a>
-			</li>
+			<?php
+			if ($get_user["account_type"] == ACCOUNT_TYPES[1]) :
+			?>
+				<li>
+					<a href="report-disaster">
+						<i class="nc-icon nc-sound-wave"></i>
+						<p>Report Disaster</p>
+					</a>
+				</li>
+				<li>
+					<a href="disasters">
+						<i class="nc-icon nc-single-copy-04"></i>
+						<p>Disasters</p>
+					</a>
+				</li>
+				<li>
+					<a href="updates">
+						<i class="nc-icon nc-refresh-69"></i>
+						<p>Disaster Updates</p>
+					</a>
+				</li>
+				<li>
+					<a href="safety-information">
+						<i class="nc-icon nc-alert-circle-i"></i>
+						<p>Safety Information</p>
+					</a>
+				</li>
+			<?php
+			endif;
+			?>
 			<li>
 				<a href="analysis">
 					<i class="nc-icon nc-chart-bar-32"></i>
@@ -42,7 +60,7 @@
 			<li class="active-pro">
 				<a href="logout">
 					<i class="nc-icon text-danger nc-button-power"></i>
-					<p class="text-danger">Logout</p>
+					<p class="text-danger">Logout</>
 				</a>
 			</li>
 		</ul>

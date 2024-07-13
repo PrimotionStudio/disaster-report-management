@@ -1,9 +1,18 @@
 <?php
+const ACCOUNT_TYPES = ['Government Official', 'Community Member', 'Emergency Responder'];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = $_POST["username"];
 	$email = $_POST["email"];
 	$phone = $_POST["phone"];
+	$account_type = $_POST["account_type"];
 	$password = $_POST["password"];
+
+	if (!in_array($account_type, ACCOUNT_TYPES)) {
+		$_SESSION["alert"] = "Invalid account type";
+		header("location: register");
+		exit;
+	}
 
 	// Check if username and email already exist in users table
 	$select_user = "SELECT * FROM users WHERE username='$username' || email='$email'";
