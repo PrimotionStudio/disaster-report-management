@@ -22,10 +22,10 @@ include_once "included/head.php";
 require_once "included/alert.php";
 
 $select_disasters = "SELECT * FROM disasters";
-$query_disasters = mysqli_query($con, $select_disasters);
+$query_resource = mysqli_query($con, $select_disasters);
 $disaster_types = [];
-while ($get_disaster = mysqli_fetch_assoc($query_disasters)) {
-  $disaster_types[] = $get_disaster["disaster"];
+while ($get_resource = mysqli_fetch_assoc($query_resource)) {
+  $disaster_types[] = $get_resource["disaster"];
 }
 $disaster_types = array_unique($disaster_types);
 require_once "func/login.php";
@@ -67,7 +67,7 @@ require_once "func/login.php";
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category">Reports</p>
-                    <p class="card-title"><?= mysqli_num_rows($query_disasters) ?></p>
+                    <p class="card-title"><?= mysqli_num_rows($query_resource) ?></p>
                   </div>
                 </div>
               </div>

@@ -3,10 +3,10 @@
 <script>
 	<?php
 	$select_disasters = "SELECT * FROM disasters";
-	$query_disasters = mysqli_query($con, $select_disasters);
+	$query_resource = mysqli_query($con, $select_disasters);
 	$disaster_types = [];
-	while ($get_disaster = mysqli_fetch_assoc($query_disasters)) {
-		$disaster_types[] = $get_disaster["disaster"];
+	while ($get_resource = mysqli_fetch_assoc($query_resource)) {
+		$disaster_types[] = $get_resource["disaster"];
 	}
 
 	$disaster_types = array_unique($disaster_types);
@@ -15,10 +15,10 @@
 	foreach ($disaster_types as $type) {
 		$severity = [];
 		$select_disasters = "SELECT * FROM disasters WHERE disaster='$type'";
-		$query_disasters = mysqli_query($con, $select_disasters);
-		$occurance[] = mysqli_num_rows($query_disasters);
-		while ($get_disaster = mysqli_fetch_assoc($query_disasters)) {
-			$severity[] = $get_disaster["severity"];
+		$query_resource = mysqli_query($con, $select_disasters);
+		$occurance[] = mysqli_num_rows($query_resource);
+		while ($get_resource = mysqli_fetch_assoc($query_resource)) {
+			$severity[] = $get_resource["severity"];
 		}
 		$disasters[$type] = $severity;
 	}

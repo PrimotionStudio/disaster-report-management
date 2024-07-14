@@ -35,7 +35,7 @@ const PAGE_TITLE = "Disaster Details";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-$get_disaster = mysqli_fetch_assoc($query_disaster);
+$get_resource = mysqli_fetch_assoc($query_disaster);
 
 require_once "func/disaster-details.php";
 ?>
@@ -72,16 +72,16 @@ require_once "func/disaster-details.php";
                   <tbody>
                     <tr>
                       <td>
-                        <?= $get_disaster["disaster"] ?>
+                        <?= $get_resource["disaster"] ?>
                       </td>
                       <td>
-                        <?= $get_disaster["severity"] ?>
+                        <?= $get_resource["severity"] ?>
                       </td>
                       <td>
-                        <?= $get_disaster["location"] ?>
+                        <?= $get_resource["location"] ?>
                       </td>
                       <td class="text-right">
-                        <?= date('d, M Y - h:iA', strtotime($get_disaster["event_datetime"])) ?>
+                        <?= date('d, M Y - h:iA', strtotime($get_resource["event_datetime"])) ?>
                       </td>
                     </tr>
                   </tbody>
@@ -90,7 +90,7 @@ require_once "func/disaster-details.php";
             </div>
             <div class="card-footer border-top">
               <h6 class="card-title">Description</h6>
-              <p><?= $get_disaster["description"] ?></p>
+              <p><?= $get_resource["description"] ?></p>
             </div>
           </div>
         </div>
@@ -108,13 +108,13 @@ require_once "func/disaster-details.php";
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Affected Population</label>
-                      <textarea class="form-control textarea" name="affected" style="max-height: 200px; height: 200px;" placeholder="Number of people affected"><?= $get_disaster["affected"] ?></textarea>
+                      <textarea class="form-control textarea" name="affected" style="max-height: 200px; height: 200px;" placeholder="Number of people affected"><?= $get_resource["affected"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Extent of Damages</label>
-                      <textarea class="form-control textarea" name="damages" style="max-height: 200px; height: 200px;" placeholder="Extent of damages done"><?= $get_disaster["damages"] ?></textarea>
+                      <textarea class="form-control textarea" name="damages" style="max-height: 200px; height: 200px;" placeholder="Extent of damages done"><?= $get_resource["damages"] ?></textarea>
                     </div>
                   </div>
                 </div>
@@ -122,13 +122,13 @@ require_once "func/disaster-details.php";
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Response Effort</label>
-                      <textarea class="form-control textarea" name="response" style="max-height: 200px; height: 200px;" placeholder="Has relieve materials been sent by government officials the response and effort made to tackle the disaster"><?= $get_disaster["response"] ?></textarea>
+                      <textarea class="form-control textarea" name="response" style="max-height: 200px; height: 200px;" placeholder="Has relieve materials been sent by government officials the response and effort made to tackle the disaster"><?= $get_resource["response"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Casualties and Compensation</label>
-                      <textarea class="form-control textarea" name="casualties" style="max-height: 200px; height: 200px;" placeholder="Were the relieve materials enough"><?= $get_disaster["casualties"] ?></textarea>
+                      <textarea class="form-control textarea" name="casualties" style="max-height: 200px; height: 200px;" placeholder="Were the relieve materials enough"><?= $get_resource["casualties"] ?></textarea>
                     </div>
                   </div>
                 </div>

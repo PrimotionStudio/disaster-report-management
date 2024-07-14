@@ -51,6 +51,18 @@
 					<p>Analysis</p>
 				</a>
 			</li>
+			<li>
+				<a href="policy">
+					<i class="nc-icon nc-paper"></i>
+					<p>Policy</p>
+				</a>
+			</li>
+			<li>
+				<a href="resource">
+					<i class="nc-icon nc-ambulance"></i>
+					<p>Resource Allocation</p>
+				</a>
+			</li>
 			<li class="active-pro">
 				<a href="logout">
 					<i class="nc-icon text-danger nc-button-power"></i>
