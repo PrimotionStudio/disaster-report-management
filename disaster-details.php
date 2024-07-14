@@ -49,12 +49,9 @@ require_once "func/disaster-details.php";
     ?>
     <div class="content">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
           <div class="card">
-            <div class="card-header">
-              <h6 class="card-title">Description</h6>
-              <p><?= $get_disaster["description"] ?></p>
-            </div>
             <div class="card-body">
               <div class="">
                 <table class="table">
@@ -91,11 +88,16 @@ require_once "func/disaster-details.php";
                 </table>
               </div>
             </div>
+            <div class="card-footer border-top">
+              <h6 class="card-title">Description</h6>
+              <p><?= $get_disaster["description"] ?></p>
+            </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
           <div class="card card-user">
             <div class="card-header">
               <h6 class="card-title">Update Report</h6>
@@ -106,13 +108,13 @@ require_once "func/disaster-details.php";
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Affected Population</label>
-                      <textarea class="form-control textarea" name="affected" cols="30" rows="20" placeholder="Number of people affected"><?= $get_disaster["affected"] ?></textarea>
+                      <textarea class="form-control textarea" name="affected" style="max-height: 200px; height: 200px;" placeholder="Number of people affected"><?= $get_disaster["affected"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Extent of Damages</label>
-                      <textarea class="form-control textarea" name="damages" cols="30" rows="20" placeholder="Extent of damages done"><?= $get_disaster["damages"] ?></textarea>
+                      <textarea class="form-control textarea" name="damages" style="max-height: 200px; height: 200px;" placeholder="Extent of damages done"><?= $get_disaster["damages"] ?></textarea>
                     </div>
                   </div>
                 </div>
@@ -120,20 +122,14 @@ require_once "func/disaster-details.php";
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Response Effort</label>
-                      <textarea class="form-control textarea" name="response" cols="30" rows="20" placeholder="Has relieve materials been sent by government officials the response and effort made to tackle the disaster"><?= $get_disaster["response"] ?></textarea>
+                      <textarea class="form-control textarea" name="response" style="max-height: 200px; height: 200px;" placeholder="Has relieve materials been sent by government officials the response and effort made to tackle the disaster"><?= $get_disaster["response"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Casualties and Compensation</label>
-                      <textarea class="form-control textarea" name="casualties" cols="30" rows="20" placeholder="Were the relieve materials enough"><?= $get_disaster["casualties"] ?></textarea>
+                      <textarea class="form-control textarea" name="casualties" style="max-height: 200px; height: 200px;" placeholder="Were the relieve materials enough"><?= $get_disaster["casualties"] ?></textarea>
                     </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="media">Pictures</label>
-                    <input type="file" name="media" id="media" multiple>
                   </div>
                 </div>
                 <div class="row">

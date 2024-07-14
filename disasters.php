@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 require_once "required/session.php";
 require_once "required/sql.php";
 require_once "required/validate.php";
-const PAGE_TITLE = "Disasters";
+const PAGE_TITLE = "Disasters Update";
 include_once "included/head.php";
 require_once "included/alert.php";
 
@@ -37,10 +37,10 @@ $query_disasters = mysqli_query($con, $select_disasters);
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title">Reported Disasters</h4>
+              <h4 class="card-title">Disasters Updates</h4>
             </div>
             <div class="card-body">
-              <div class="">
+              <div class="table-responsive">
                 <table class="table table-hover">
                   <thead class="text-primary">
                     <th>
@@ -78,6 +78,7 @@ $query_disasters = mysqli_query($con, $select_disasters);
                         </td>
                         <td class="text-right">
                           <a href="disaster-details?id=<?= $get_disaster["id"] ?>" title="more">
+                            Provide Update
                             <i class="nc-icon nc-minimal-right"></i>
                           </a>
                         </td>

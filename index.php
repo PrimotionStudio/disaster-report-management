@@ -108,9 +108,6 @@ require_once "func/login.php";
                     <th>
                       Event Date/Time
                     </th>
-                    <th class="text-right">
-                      Action
-                    </th>
                   </thead>
                   <tbody>
                     <?php
@@ -131,11 +128,6 @@ require_once "func/login.php";
                         </td>
                         <td>
                           <?= date('d, M Y - h:iA', strtotime($get_disaster["event_datetime"])) ?>
-                        </td>
-                        <td class="text-right">
-                          <a href="disaster-details?id=<?= $get_disaster["id"] ?>" title="more">
-                            <i class="nc-icon nc-minimal-right"></i>
-                          </a>
                         </td>
                       </tr>
                     <?php

@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 require_once "required/session.php";
 require_once "required/sql.php";
 require_once "required/validate.php";
-const PAGE_TITLE = "Disaster Report Management System";
+const PAGE_TITLE = "Access Safety Information";
 include_once "included/head.php";
 require_once "included/alert.php";
 

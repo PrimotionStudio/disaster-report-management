@@ -32,14 +32,8 @@
 				</li>
 				<li>
 					<a href="disasters">
-						<i class="nc-icon nc-single-copy-04"></i>
-						<p>Disasters</p>
-					</a>
-				</li>
-				<li>
-					<a href="updates">
 						<i class="nc-icon nc-refresh-69"></i>
-						<p>Disaster Updates</p>
+						<p>Disasters Updates</p>
 					</a>
 				</li>
 				<li>
