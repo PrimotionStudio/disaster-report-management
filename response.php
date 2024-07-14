@@ -22,22 +22,22 @@ if (isset($_GET['id'])) {
     $select_disaster = "SELECT * FROM disasters WHERE id='$id'";
     $query_disaster = mysqli_query($con, $select_disaster);
     if (mysqli_num_rows($query_disaster) == 0) {
-      $_SESSION["alert"] = "Cannot find the requested report";
-      header("location: index");
-      exit;
+        $_SESSION["alert"] = "Cannot find the requested report3";
+        header("location: index");
+        exit;
     }
     $get_disaster = mysqli_fetch_assoc($query_disaster);
-  } else {
-    $_SESSION["alert"] = "Cannot find the requested report";
+} else {
+    $_SESSION["alert"] = "Cannot find the requested report2";
     header("location: index");
     exit;
-  }
+}
 const PAGE_TITLE = "Response Effort";
 include_once "included/head.php";
 require_once "included/alert.php";
 
 if ($get_user["account_type"] == ACCOUNT_TYPES[2])
-    require_once "func/response.php"
+    require_once "func/response.php";
 ?>
 <div class="wrapper ">
     <?php
@@ -103,7 +103,7 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[2])
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $select_response = "SELECT * FROM response";
+                                        $select_response = "SELECT * FROM response WHERE disaster_id='$id' ORDER BY id DESC";
                                         $query_response = mysqli_query($con, $select_response);
                                         $i = 1;
                                         while ($get_response = mysqli_fetch_assoc($query_response)) :

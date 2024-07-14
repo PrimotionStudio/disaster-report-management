@@ -116,7 +116,7 @@ while ($get_response = mysqli_fetch_assoc($query_response)) {
                         <td class="text-right">
                           <a href="response?id=<?= $get_response["id"] ?>" title="more">
                             Response Effort
-                            <i class="nc-icon nc-satisfied"></i>
+                            <i class="nc-icon nc-ambulance"></i>
                           </a>
                           |
                           <a href="disaster_details?id=<?= $get_response["id"] ?>" title="more">
