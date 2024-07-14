@@ -23,7 +23,7 @@
 		$disasters[$type] = $severity;
 	}
 	?>
-	const xValues = [<?php
+	const yValues = [<?php
 						foreach ($disaster_types as $i => $type) {
 							if ($i != 0) {
 								echo ", ";
@@ -32,29 +32,34 @@
 							echo $type;
 							echo "'";
 						}
-						?>];
-	const yValues = [<?php
+						?>, ""];
+	const xValues = [<?php
 						foreach ($occurance as $i => $occur) {
 							if ($i != 0) {
 								echo ", ";
 							}
 							echo $occur;
 						}
-						?>];
+						?>, 0];
 	const barColors = ['#51cbce', '#6c757d', '#6bd098', '#ef8157', '#fbc658', '#51bcda', '#212529', '#343a40'];
 	new Chart("occurance", {
 		type: "bar",
 		data: {
-			labels: xValues,
+			labels: yValues,
 			datasets: [{
 				backgroundColor: barColors,
-				data: yValues
+				data: xValues
 			}]
 		},
 		options: {
 			legend: {
 				display: false
 			},
+			scales: {
+				x: {
+					beginAtZero: true
+				}
+			}
 		}
 	});
 </script>

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 	// Insert user in database
-	$insert_user = "INSERT INTO users (username, email, phone, password) VALUES ('$username', '$email', '$phone', '$password')";
+	$insert_user = "INSERT INTO users (username, email, phone, account_type, password) VALUES ('$username', '$email', '$phone', '$account_type', '$password')";
 	if (mysqli_query($con, $insert_user)) {
 		$_SESSION["alert"] = "New account created";
 		header("location: login");

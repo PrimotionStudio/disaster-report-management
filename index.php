@@ -67,24 +67,6 @@ require_once "func/login.php";
           </div>
         </div>
       </div>
-      <?php
-      if ($get_user["account_type"] === ACCOUNT_TYPES[2]) :
-      ?>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Reported Occurances</h4>
-              </div>
-              <div class="card-body">
-                <canvas id="occurance" width="507" height="126"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php
-      endif;
-      ?>
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -108,6 +90,9 @@ require_once "func/login.php";
                     <th>
                       Event Date/Time
                     </th>
+                    <th class="text-right">
+                      Action
+                    </th>
                   </thead>
                   <tbody>
                     <?php
@@ -128,6 +113,12 @@ require_once "func/login.php";
                         </td>
                         <td>
                           <?= date('d, M Y - h:iA', strtotime($get_disaster["event_datetime"])) ?>
+                        </td>
+                        <td class="text-right">
+                          <a href="disaster_details?id=<?= $get_disaster["id"] ?>" title="more">
+                            More Information
+                            <i class="nc-icon nc-minimal-right"></i>
+                          </a>
                         </td>
                       </tr>
                     <?php

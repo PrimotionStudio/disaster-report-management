@@ -30,6 +30,21 @@ while ($get_disaster = mysqli_fetch_assoc($query_disasters)) {
 $disaster_types = array_unique($disaster_types);
 require_once "func/login.php";
 ?>
+<style>
+  #graph-x {
+    position: absolute;
+    transform: translate(150px, -20px);
+  }
+
+  #graph-y {
+    writing-mode: vertical-lr;
+    position: absolute;
+    transform: translate(-5px, 20px);
+  }
+  canvas {
+    margin: 0 0 1rem 1rem;
+  }
+</style>
 <div class="wrapper ">
   <?php
   include_once "included/sidebar.php";
@@ -74,7 +89,8 @@ require_once "func/login.php";
               <h4 class="card-title">Reported Occurances</h4>
             </div>
             <div class="card-body">
-            <canvas id="occurance" width="507" height="126"></canvas>
+              <span id="graph-y">occurance</span>
+              <canvas id="occurance" width="400" height="200"></canvas>
             </div>
           </div>
         </div>
@@ -87,88 +103,32 @@ require_once "func/login.php";
               <h4 class="card-title">Reported Severity/Occurances</h4>
             </div>
             <div class="card-body">
-            <canvas id="sever_occur" width="507" height="126"></canvas>
+            <span id="graph-y">severity</span>
+              <canvas id="sever_occur" width="400" height="200"></canvas>
+              <span id="graph-x">occurance</span>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-      <?php
-      foreach ($disaster_types as $type):
-      ?>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title"><?= ucfirst($type) ?> Severity</h4>
-            </div>
-            <div class="card-body">
-            <canvas id="<?= $type ?>_chart" width="507" height="126"></canvas>
-            </div>
-          </div>
-        </div>
-      <?php
-      endforeach;
-      ?>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">Reported Disasters</h4>
-            </div>
-            <div class="card-body">
-              <div class="">
-                <table class="table table-hover">
-                  <thead class="text-primary">
-                    <th>
-                      Disaster Type
-                    </th>
-                    <th>
-                      Severity
-                    </th>
-                    <th>
-                      Location
-                    </th>
-                    <th>
-                      Event Date/Time
-                    </th>
-                    <th class="text-right">
-                      Action
-                    </th>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $query_disasters = mysqli_query($con, $select_disasters);
-                    while ($get_disaster = mysqli_fetch_assoc($query_disasters)) :
-                    ?>
-                      <tr>
-                        <td>
-                          <?= $get_disaster["disaster"] ?>
-                        </td>
-                        <td>
-                          <?= $get_disaster["severity"] ?>
-                        </td>
-                        <td>
-                          <?= $get_disaster["location"] ?>
-                        </td>
-                        <td>
-                          <?= date('d, M Y - h:iA', strtotime($get_disaster["event_datetime"])) ?>
-                        </td>
-                        <td class="text-right">
-                          <a href="disaster-details?id=<?= $get_disaster["id"] ?>" title="more">
-                            <i class="nc-icon nc-minimal-right"></i>
-                          </a>
-                        </td>
-                      </tr>
-                    <?php
-                    endwhile;
-                    ?>
-                  </tbody>
-                </table>
+        <?php
+        foreach ($disaster_types as $type) :
+        ?>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"><?= ucfirst($type) ?> Severity</h4>
+              </div>
+              <div class="card-body">
+                <span id="graph-y">severity</span>
+                <canvas id="<?= $type ?>_chart" width="400" height="200"></canvas>
+                <span id="graph-x">occurance</span>
               </div>
             </div>
           </div>
-        </div>
+        <?php
+        endforeach;
+        ?>
       </div>
     </div>
     <?php

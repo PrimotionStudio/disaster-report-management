@@ -45,12 +45,12 @@
 			<?php
 			endif;
 			?>
-			<!-- <li>
+			<li>
 				<a href="analysis">
 					<i class="nc-icon nc-chart-bar-32"></i>
 					<p>Analysis</p>
 				</a>
-			</li> -->
+			</li>
 			<li class="active-pro">
 				<a href="logout">
 					<i class="nc-icon text-danger nc-button-power"></i>
