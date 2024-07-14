@@ -406,3 +406,17 @@ demo = {
   }
 
 };
+
+// $(document).ready(function() {
+//   $("disasterTable").bootstrapTable();
+//   $("#tableSearch").on("keyup", function() {
+//       var value = $(this).val().toLowerCase();
+//       $("disasterTable").bootstrapTable('filter', {
+//         search: true,
+//         text: value
+//       });
+      // $("#disasterTable tr").filter(function() {
+      //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      // });
+//   });
+// });
