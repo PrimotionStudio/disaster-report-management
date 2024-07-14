@@ -61,6 +61,7 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[2])
                             </div>
                             <div class="card-body">
                                 <form action="" method="post">
+                                    <input type="hidden" name="disaster_id" value="<?= $id ?>">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
