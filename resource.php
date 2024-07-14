@@ -21,7 +21,8 @@ const PAGE_TITLE = "Resource Allocation";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-require_once "func/resource.php"
+if ($get_user["account_type"] == ACCOUNT_TYPES[0])
+    require_once "func/resource.php"
 ?>
 <div class="wrapper ">
     <?php
@@ -32,69 +33,73 @@ require_once "func/resource.php"
         include_once "included/navbar.php";
         ?>
         <div class="content">
-
-            <div class="row">
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-8">
-                    <div class="card card-user">
-                        <div class="card-header">
-                            <h5 class="card-title">Resource Allocation</h5>
-                        </div>
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Type of Disaster</label>
-                                            <select name="disaster" class="form-control">
-                                                <option value="Tornado">Tornado</option>
-                                                <option value="Earthquake">Earthquake</option>
-                                                <option value="Hurricane">Hurricane</option>
-                                                <option value="Volcano">Volcano</option>
-                                                <option value="Flood">Flood</option>
-                                                <option value="Landslide">Landslide</option>
-                                                <option value="Wildfire">Wildfire</option>
-                                                <option value="Other">Other</option>
-                                            </select>
+            <?php
+            if ($get_user["account_type"] == ACCOUNT_TYPES[0]) :
+            ?>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card card-user">
+                            <div class="card-header">
+                                <h5 class="card-title">Resource Allocation</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Type of Disaster</label>
+                                                <select name="disaster" class="form-control">
+                                                    <option value="Tornado">Tornado</option>
+                                                    <option value="Earthquake">Earthquake</option>
+                                                    <option value="Hurricane">Hurricane</option>
+                                                    <option value="Volcano">Volcano</option>
+                                                    <option value="Flood">Flood</option>
+                                                    <option value="Landslide">Landslide</option>
+                                                    <option value="Wildfire">Wildfire</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Resource Type</label>
-                                            <input type="text" class="form-control" name="type">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Resource Type</label>
+                                                <input type="text" class="form-control" name="type">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Quantity</label>
-                                            <input type="number" class="form-control" name="quantity">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Quantity</label>
+                                                <input type="number" class="form-control" name="quantity">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Description</label>
-                                            <textarea class="form-control textarea" name="description" placeholder=""></textarea>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea class="form-control textarea" name="description" placeholder=""></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="update ml-auto mr-auto">
-                                        <button type="submit" class="btn btn-primary btn-round">Allocate Resource</button>
+                                    <div class="row">
+                                        <div class="update ml-auto mr-auto">
+                                            <button type="submit" class="btn btn-primary btn-round">Allocate Resource</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            <?php
+            endif;
+            ?>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">

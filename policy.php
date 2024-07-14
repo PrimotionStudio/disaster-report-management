@@ -21,7 +21,8 @@ const PAGE_TITLE = "Policy Making";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-require_once "func/policy.php"
+if ($get_user["account_type"] == ACCOUNT_TYPES[0])
+    require_once "func/policy.php";
 ?>
 <div class="wrapper ">
     <?php
@@ -32,44 +33,48 @@ require_once "func/policy.php"
         include_once "included/navbar.php";
         ?>
         <div class="content">
-
-            <div class="row">
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-8">
-                    <div class="card card-user">
-                        <div class="card-header">
-                            <h5 class="card-title">Policy Making</h5>
-                        </div>
-                        <div class="card-body">
-                            <form action="" method="post">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Policy Title</label>
-                                            <input type="text" class="form-control" placeholder="" name="title">
+            <?php
+            if ($get_user["account_type"] == ACCOUNT_TYPES[0]) :
+            ?>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card card-user">
+                            <div class="card-header">
+                                <h5 class="card-title">Policy Making</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Policy Title</label>
+                                                <input type="text" class="form-control" placeholder="" name="title">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Policy Description</label>
-                                            <textarea class="form-control textarea" name="description" placeholder=""></textarea>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Policy Description</label>
+                                                <textarea class="form-control textarea" name="description" placeholder=""></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="update ml-auto mr-auto">
-                                        <button type="submit" class="btn btn-primary btn-round">Add Policy</button>
+                                    <div class="row">
+                                        <div class="update ml-auto mr-auto">
+                                            <button type="submit" class="btn btn-primary btn-round">Add Policy</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            <?php
+            endif;
+            ?>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">

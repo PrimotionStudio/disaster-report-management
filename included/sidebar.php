@@ -13,9 +13,17 @@
           </div> -->
 		</a>
 	</div>
+	<?php
+	function file_name()
+	{
+		$file_path = explode("/", $_SERVER["SCRIPT_NAME"]);
+		$file_name = end($file_path);
+		return explode(".", $file_name)[0];
+	}
+	?>
 	<div class="sidebar-wrapper">
 		<ul class="nav">
-			<li>
+			<li class="<?php echo (file_name() === "index") ? "active" : ""; ?>">
 				<a href="index">
 					<i class="nc-icon nc-bank"></i>
 					<p>Dashboard</p>
@@ -24,19 +32,19 @@
 			<?php
 			if ($get_user["account_type"] == ACCOUNT_TYPES[1]) :
 			?>
-				<li>
+			<li class="<?php echo (file_name() === "report-disaster") ? "active" : ""; ?>">
 					<a href="report-disaster">
 						<i class="nc-icon nc-sound-wave"></i>
 						<p>Report Disaster</p>
 					</a>
 				</li>
-				<li>
+				<li class="<?php echo (file_name() === "disasters") ? "active" : ""; ?>">
 					<a href="disasters">
 						<i class="nc-icon nc-refresh-69"></i>
 						<p>Disasters Updates</p>
 					</a>
 				</li>
-				<li>
+				<li class="<?php echo (file_name() === "safety-information") ? "active" : ""; ?>">
 					<a href="safety-information">
 						<i class="nc-icon nc-alert-circle-i"></i>
 						<p>Safety Information</p>
@@ -44,20 +52,24 @@
 				</li>
 			<?php
 			endif;
+			if ($get_user["account_type"] == ACCOUNT_TYPES[0]) :
 			?>
-			<li>
-				<a href="analysis">
-					<i class="nc-icon nc-chart-bar-32"></i>
-					<p>Analysis</p>
-				</a>
-			</li>
-			<li>
+				<li class="<?php echo (file_name() === "analysis") ? "active" : ""; ?>">
+					<a href="analysis">
+						<i class="nc-icon nc-chart-bar-32"></i>
+						<p>Analysis</p>
+					</a>
+				</li>
+			<?php
+			endif;
+			?>
+				<li class="<?php echo (file_name() === "policy") ? "active" : ""; ?>">
 				<a href="policy">
 					<i class="nc-icon nc-paper"></i>
 					<p>Policy</p>
 				</a>
 			</li>
-			<li>
+			<li class="<?php echo (file_name() === "resource") ? "active" : ""; ?>">
 				<a href="resource">
 					<i class="nc-icon nc-ambulance"></i>
 					<p>Resource Allocation</p>
