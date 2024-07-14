@@ -22,10 +22,10 @@ include_once "included/head.php";
 require_once "included/alert.php";
 
 $select_disasters = "SELECT * FROM disasters";
-$query_resource = mysqli_query($con, $select_disasters);
+$query_response = mysqli_query($con, $select_disasters);
 $disaster_types = [];
-while ($get_resource = mysqli_fetch_assoc($query_resource)) {
-    $disaster_types[] = $get_resource["disaster"];
+while ($get_response = mysqli_fetch_assoc($query_response)) {
+    $disaster_types[] = $get_response["disaster"];
 }
 
 require_once "func/login.php";

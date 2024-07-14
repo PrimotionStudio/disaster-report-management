@@ -22,7 +22,7 @@ include_once "included/head.php";
 require_once "included/alert.php";
 
 $select_disasters = "SELECT * FROM disasters ORDER BY id DESC";
-$query_resource = mysqli_query($con, $select_disasters);
+$query_response = mysqli_query($con, $select_disasters);
 ?>
 <div class="wrapper ">
   <?php
@@ -61,23 +61,23 @@ $query_resource = mysqli_query($con, $select_disasters);
                   </thead>
                   <tbody>
                     <?php
-                    while ($get_resource = mysqli_fetch_assoc($query_resource)) :
+                    while ($get_response = mysqli_fetch_assoc($query_response)) :
                     ?>
                       <tr>
                         <td>
-                          <?= $get_resource["disaster"] ?>
+                          <?= $get_response["disaster"] ?>
                         </td>
                         <td>
-                          <?= $get_resource["severity"] ?>
+                          <?= $get_response["severity"] ?>
                         </td>
                         <td>
-                          <?= $get_resource["location"] ?>
+                          <?= $get_response["location"] ?>
                         </td>
                         <td>
-                          <?= date('d, M Y - h:iA', strtotime($get_resource["event_datetime"])) ?>
+                          <?= date('d, M Y - h:iA', strtotime($get_response["event_datetime"])) ?>
                         </td>
                         <td class="text-right">
-                          <a href="disaster-details?id=<?= $get_resource["id"] ?>" title="more">
+                          <a href="disaster-details?id=<?= $get_response["id"] ?>" title="more">
                             Provide Update
                             <i class="nc-icon nc-minimal-right"></i>
                           </a>

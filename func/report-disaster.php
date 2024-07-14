@@ -6,8 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$severity = $_POST["severity"];
 	$description = $_POST["description"];
 
-	$insert_resource = "INSERT INTO disasters (event_datetime, location, disaster, severity, description) VALUES ('$datetime', '$location', '$disaster', '$severity', '$description')";
-	if (mysqli_query($con, $insert_resource)) {
+	$insert_response = "INSERT INTO disasters (event_datetime, location, disaster, severity, description) VALUES ('$datetime', '$location', '$disaster', '$severity', '$description')";
+	if (mysqli_query($con, $insert_response)) {
 		$_SESSION["alert"] = "Disaster Reported";
 		header("location: disasters");
 	} else {

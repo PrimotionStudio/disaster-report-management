@@ -22,10 +22,10 @@ include_once "included/head.php";
 require_once "included/alert.php";
 
 $select_disasters = "SELECT * FROM disasters";
-$query_resource = mysqli_query($con, $select_disasters);
+$query_response = mysqli_query($con, $select_disasters);
 $disaster_types = [];
-while ($get_resource = mysqli_fetch_assoc($query_resource)) {
-  $disaster_types[] = $get_resource["disaster"];
+while ($get_response = mysqli_fetch_assoc($query_response)) {
+  $disaster_types[] = $get_response["disaster"];
 }
 
 ?>
@@ -51,7 +51,7 @@ while ($get_resource = mysqli_fetch_assoc($query_resource)) {
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category">Reports</p>
-                    <p class="card-title"><?= mysqli_num_rows($query_resource) ?></p>
+                    <p class="card-title"><?= mysqli_num_rows($query_response) ?></p>
                   </div>
                 </div>
               </div>
@@ -95,26 +95,31 @@ while ($get_resource = mysqli_fetch_assoc($query_resource)) {
                   </thead>
                   <tbody>
                     <?php
-                    $query_resource = mysqli_query($con, $select_disasters);
+                    $query_response = mysqli_query($con, $select_disasters);
                     $i = 1;
-                    while ($get_resource = mysqli_fetch_assoc($query_resource)) :
+                    while ($get_response = mysqli_fetch_assoc($query_response)) :
                     ?>
                       <tr>
                         <td><?= $i ?></td>
                         <td>
-                          <?= $get_resource["disaster"] ?>
+                          <?= $get_response["disaster"] ?>
                         </td>
                         <td>
-                          <?= $get_resource["severity"] ?>
+                          <?= $get_response["severity"] ?>
                         </td>
                         <td>
-                          <?= $get_resource["location"] ?>
+                          <?= $get_response["location"] ?>
                         </td>
                         <td>
-                          <?= date('d, M Y - h:iA', strtotime($get_resource["event_datetime"])) ?>
+                          <?= date('d, M Y - h:iA', strtotime($get_response["event_datetime"])) ?>
                         </td>
                         <td class="text-right">
-                          <a href="disaster_details?id=<?= $get_resource["id"] ?>" title="more">
+                          <a href="response?id=<?= $get_response["id"] ?>" title="more">
+                            Response Effort
+                            <i class="nc-icon nc-satisfied"></i>
+                          </a>
+                          |
+                          <a href="disaster_details?id=<?= $get_response["id"] ?>" title="more">
                             More Information
                             <i class="nc-icon nc-minimal-right"></i>
                           </a>

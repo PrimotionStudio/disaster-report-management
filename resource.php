@@ -129,27 +129,27 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $select_resource = "SELECT * FROM resource";
-                                        $query_resource = mysqli_query($con, $select_resource);
+                                        $select_response = "SELECT * FROM resource";
+                                        $query_response = mysqli_query($con, $select_response);
                                         $i = 1;
-                                        while ($get_resource = mysqli_fetch_assoc($query_resource)) :
+                                        while ($get_response = mysqli_fetch_assoc($query_response)) :
                                         ?>
                                             <tr>
                                                 <td><?= $i ?></td>
                                                 <td>
-                                                    <?= $get_resource["disaster"] ?>
+                                                    <?= $get_response["disaster"] ?>
                                                 </td>
                                                 <td>
-                                                    <?= $get_resource["type"] ?>
+                                                    <?= $get_response["type"] ?>
                                                 </td>
                                                 <td>
-                                                    <?= $get_resource["quantity"] ?>
+                                                    <?= $get_response["quantity"] ?>
                                                 </td>
                                                 <td>
-                                                    <?= $get_resource["description"] ?>
+                                                    <?= $get_response["description"] ?>
                                                 </td>
                                                 <td class="text-right">
-                                                    <?= date('d, M Y - h:iA', strtotime($get_resource["datetime"])) ?>
+                                                    <?= date('d, M Y - h:iA', strtotime($get_response["datetime"])) ?>
                                                 </td>
                                             </tr>
                                         <?php

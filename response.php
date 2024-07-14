@@ -17,12 +17,27 @@ Coded by www.creative-tim.com
 require_once "required/session.php";
 require_once "required/sql.php";
 require_once "required/validate.php";
-const PAGE_TITLE = "Policy Making";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $select_disaster = "SELECT * FROM disasters WHERE id='$id'";
+    $query_disaster = mysqli_query($con, $select_disaster);
+    if (mysqli_num_rows($query_disaster) == 0) {
+      $_SESSION["alert"] = "Cannot find the requested report";
+      header("location: index");
+      exit;
+    }
+    $get_disaster = mysqli_fetch_assoc($query_disaster);
+  } else {
+    $_SESSION["alert"] = "Cannot find the requested report";
+    header("location: index");
+    exit;
+  }
+const PAGE_TITLE = "Response Effort";
 include_once "included/head.php";
 require_once "included/alert.php";
 
-if ($get_user["account_type"] == ACCOUNT_TYPES[0])
-    require_once "func/policy.php";
+if ($get_user["account_type"] == ACCOUNT_TYPES[2])
+    require_once "func/response.php"
 ?>
 <div class="wrapper ">
     <?php
@@ -34,7 +49,7 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
         ?>
         <div class="content">
             <?php
-            if ($get_user["account_type"] == ACCOUNT_TYPES[0]) :
+            if ($get_user["account_type"] == ACCOUNT_TYPES[2]) :
             ?>
                 <div class="row">
                     <div class="col-md-2">
@@ -42,29 +57,21 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                     <div class="col-md-8">
                         <div class="card card-user">
                             <div class="card-header">
-                                <h5 class="card-title">Policy Making</h5>
+                                <h5 class="card-title">Response Effort</h5>
                             </div>
                             <div class="card-body">
                                 <form action="" method="post">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Policy Title</label>
-                                                <input type="text" class="form-control" placeholder="" name="title">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Policy Description</label>
+                                                <label>Description of Response Effort</label>
                                                 <textarea class="form-control textarea" name="description" placeholder=""></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="update ml-auto mr-auto">
-                                            <button type="submit" class="btn btn-primary btn-round">Add Policy</button>
+                                            <button type="submit" class="btn btn-primary btn-round">Save Response Effort</button>
                                         </div>
                                     </div>
                                 </form>
@@ -79,16 +86,13 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Policies</h4>
+                            <h4 class="card-title">Response Effort</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead class="text-primary">
                                         <th>s/n</th>
-                                        <th>
-                                            Title
-                                        </th>
                                         <th>
                                             Description
                                         </th>
@@ -98,16 +102,13 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $select_response = "SELECT * FROM policy";
+                                        $select_response = "SELECT * FROM response";
                                         $query_response = mysqli_query($con, $select_response);
                                         $i = 1;
                                         while ($get_response = mysqli_fetch_assoc($query_response)) :
                                         ?>
                                             <tr>
                                                 <td><?= $i ?></td>
-                                                <td>
-                                                    <?= $get_response["title"] ?>
-                                                </td>
                                                 <td>
                                                     <?= $get_response["description"] ?>
                                                 </td>
