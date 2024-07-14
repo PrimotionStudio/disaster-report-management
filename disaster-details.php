@@ -108,13 +108,13 @@ require_once "func/disaster-details.php";
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Affected Population</label>
-                      <textarea class="form-control textarea" name="affected" style="max-height: 200px; height: 200px;" placeholder="Number of people affected"><?= $get_resource["affected"] ?></textarea>
+                      <textarea class="form-control textarea" name="affected" style="max-height: 200px; color: #000; height: 200px;" placeholder="Number of people affected"><?= $get_resource["affected"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Extent of Damages</label>
-                      <textarea class="form-control textarea" name="damages" style="max-height: 200px; height: 200px;" placeholder="Extent of damages done"><?= $get_resource["damages"] ?></textarea>
+                      <textarea class="form-control textarea" name="damages" style="max-height: 200px; color: #000; height: 200px;" placeholder="Extent of damages done"><?= $get_resource["damages"] ?></textarea>
                     </div>
                   </div>
                 </div>
@@ -122,13 +122,13 @@ require_once "func/disaster-details.php";
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Response Effort</label>
-                      <textarea class="form-control textarea" name="response" style="max-height: 200px; height: 200px;" placeholder="Has relieve materials been sent by government officials the response and effort made to tackle the disaster"><?= $get_resource["response"] ?></textarea>
+                      <textarea class="form-control textarea" name="response" style="max-height: 200px; color: #000; height: 200px;" placeholder="Has relieve materials been sent by government officials the response and effort made to tackle the disaster"><?= $get_resource["response"] ?></textarea>
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Casualties and Compensation</label>
-                      <textarea class="form-control textarea" name="casualties" style="max-height: 200px; height: 200px;" placeholder="Were the relieve materials enough"><?= $get_resource["casualties"] ?></textarea>
+                      <textarea class="form-control textarea" name="casualties" style="max-height: 200px; color: #000; height: 200px;" placeholder="Were the relieve materials enough"><?= $get_resource["casualties"] ?></textarea>
                     </div>
                   </div>
                 </div>

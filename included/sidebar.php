@@ -52,7 +52,7 @@
 				</li>
 			<?php
 			endif;
-			if ($get_user["account_type"] == ACCOUNT_TYPES[0]) :
+			if ($get_user["account_type"] == ACCOUNT_TYPES[0] || $get_user["account_type"] == ACCOUNT_TYPES[2]) :
 			?>
 				<li class="<?php echo (file_name() === "analysis") ? "active" : ""; ?>">
 					<a href="analysis">
