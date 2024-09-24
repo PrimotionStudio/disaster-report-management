@@ -69,8 +69,28 @@ require_once "func/report-disaster.php";
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
-                      <label>Severity: <span id="value">5</span></label>
-                      <input type="range" id="severity" name="severity" class="form-control-range" min="1" max="10">
+                      <label>Severity:</label>
+                      <select name="severity" class="form-control">
+                        <optgroup label='Low'>
+                          <option value="1">Level 1: Minimal impact, easily manageable.</option>
+                          <option value="2">Level 2: Minor impact, requires limited resources.</option>
+                          <option value='3'>Level 3: Moderate impact, manageable with some effort.</option>
+                        </optgroup>
+                        <optgroup label='Medium'>
+                          <option value="4">Level 4: Significant impact, requires substantial resources.</option>
+                          <option value="5">Level 5: Major impact, affecting a large area or population.</option>
+                          <option value="6">Level 6: Severe impact, causing widespread disruption.</option>
+                        </optgroup>
+                        <optgroup label='High'>
+                          <option value="7">Level 7: Critical impact, posing a significant threat.</option>
+                          <option value="8">Level 8: Catastrophic impact, causing widespread devastation.</option>
+                          <option value="9">Level 9: Emergency impact, requiring immediate response to prevent further loss.</option>
+                        </optgroup>
+                        <optgroup label='Catastrophic'>
+                          <option value="10">Level 10: Extreme impact, causing widespread destruction and loss of life.</option>
+                        </optgroup>
+                      </select>
+                      <!-- <input type="range" id="severity" name="severity" class="form-control-range" min="1" max="10"> -->
                     </div>
                   </div>
                 </div>
@@ -106,11 +126,6 @@ require_once "func/report-disaster.php";
     ?>
   </div>
 </div>
-<script>
-  document.getElementById('severity').addEventListener('input', function() {
-    document.getElementById('value').textContent = this.value;
-  });
-</script>
 <?php
 include_once "included/scripts.php";
 ?>
