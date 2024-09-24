@@ -75,10 +75,55 @@ require_once "func/disaster-details.php";
                         <?= $get_response["disaster"] ?>
                       </td>
                       <td>
-                        <?= $get_response["severity"] ?>
+                        <?php
+                        switch ($get_response["severity"]) {
+                          case '1':
+                            echo "Level 1: Minimal impact, easily manageable.";
+                            break;
+                          case '2':
+                            echo "Level 2: Minor impact, requires limited resources.";
+                            break;
+                          case '3':
+                            echo "Level 3: Moderate impact, manageable with some effort.";
+                            break;
+                          case '4':
+                            echo "Level 4: Significant impact, requires substantial resources.";
+                            break;
+                          case '5':
+                            echo "Level 5: Major impact, affecting a large area or population.";
+                            break;
+                          case '6':
+                            echo "Level 6: Severe impact, causing widespread disruption.";
+                            break;
+                          case '7':
+                            echo "Level 7: Critical impact, posing a significant threat.";
+                            break;
+                          case '8':
+                            echo "Level 8: Catastrophic impact, causing widespread devastation.";
+                            break;
+                          case '9':
+                            echo "Level 9: Emergency impact, requiring immediate response to prevent further loss.";
+                            break;
+                          case '10':
+                            echo "Level 10: Extreme impact, causing widespread destruction and loss of life.";
+                            break;
+                          default:
+                            echo "Invalid severity level.";
+                            break;
+                        }
+                        ?>
                       </td>
                       <td>
-                        <?= $get_response["location"] ?>
+                        <?php
+                        if (strstr($get_response["location"], " _location_ ")) {
+                          $location = explode(" _location_ ", $get_response["location"]);
+                          echo $location[0] . "<br/>";
+                          echo $location[1] . "<br/>";
+                          echo $location[2] . "<br/>";
+                        } else {
+                          echo $get_response["location"];
+                        }
+                        ?>
                       </td>
                       <td class="text-right">
                         <?= date('d, M Y - h:iA', strtotime($get_response["event_datetime"])) ?>

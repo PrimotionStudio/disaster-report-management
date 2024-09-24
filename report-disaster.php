@@ -53,7 +53,7 @@ require_once "func/report-disaster.php";
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Type of Disaster*</label>
-                      <select name="disaster" class="form-control">
+                      <select name="disaster" class="form-control" required>
                         <option value="Tornado">Tornado</option>
                         <option value="Earthquake">Earthquake</option>
                         <option value="Hurricane">Hurricane</option>
@@ -70,7 +70,7 @@ require_once "func/report-disaster.php";
                   <div class="col-12">
                     <div class="form-group">
                       <label>Severity:</label>
-                      <select name="severity" class="form-control">
+                      <select name="severity" class="form-control" required>
                         <optgroup label='Low'>
                           <option value="1">Level 1: Minimal impact, easily manageable.</option>
                           <option value="2">Level 2: Minor impact, requires limited resources.</option>
@@ -96,9 +96,11 @@ require_once "func/report-disaster.php";
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Location*</label>
-                      <input type="text" class="form-control" placeholder="Describe the location where this incident has happened" name="location">
+                    <div class="input-group">
+                      <span class="input-group-text">Location*</span>
+                      <input type="text" class="form-control" placeholder="State" name="state" required>
+                      <input type="text" class="form-control" placeholder="LGA" name="lga" required>
+                      <input type="text" class="form-control" placeholder="Street/Town" name="street" required>
                     </div>
                   </div>
                 </div>
@@ -106,7 +108,7 @@ require_once "func/report-disaster.php";
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Description</label>
-                      <textarea class="form-control textarea" name="description" placeholder="Write a description of the incident to enable the emergency responder better understand the situation"></textarea>
+                      <textarea class="form-control textarea" name="description" placeholder="Write a description of the incident to enable the emergency responder better understand the situation" required></textarea>
                     </div>
                   </div>
                 </div>
