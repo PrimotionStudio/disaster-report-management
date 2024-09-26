@@ -32,7 +32,7 @@
 			<?php
 			if ($get_user["account_type"] == ACCOUNT_TYPES[1]) :
 			?>
-			<li class="<?php echo (file_name() === "report-disaster") ? "active" : ""; ?>">
+				<li class="<?php echo (file_name() === "report-disaster") ? "active" : ""; ?>">
 					<a href="report-disaster">
 						<i class="nc-icon nc-sound-wave"></i>
 						<p>Report Disaster</p>
@@ -57,13 +57,13 @@
 				<li class="<?php echo (file_name() === "analysis") ? "active" : ""; ?>">
 					<a href="analysis">
 						<i class="nc-icon nc-chart-bar-32"></i>
-						<p>Analysis</p>
+						<p>High-Level Oversight</p>
 					</a>
 				</li>
 			<?php
 			endif;
 			?>
-				<li class="<?php echo (file_name() === "policy") ? "active" : ""; ?>">
+			<li class="<?php echo (file_name() === "policy") ? "active" : ""; ?>">
 				<a href="policy">
 					<i class="nc-icon nc-paper"></i>
 					<p>Policy</p>

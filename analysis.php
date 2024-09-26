@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 require_once "required/session.php";
 require_once "required/sql.php";
 require_once "required/validate.php";
-const PAGE_TITLE = "Anaysis";
+const PAGE_TITLE = "Analysis - High Level Oversight";
 include_once "included/head.php";
 require_once "included/alert.php";
 
@@ -41,6 +41,7 @@ require_once "func/login.php";
     position: absolute;
     transform: translate(-5px, 20px);
   }
+
   canvas {
     margin: 0 0 1rem 1rem;
   }
@@ -82,8 +83,39 @@ require_once "func/login.php";
           </div>
         </div>
       </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <div class="container my-5">
+        <div class="row">
+          <!-- Bar Chart -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="">Total Number of Casualties</h4>
+              </div>
+              <div class='card-body'>
+                <canvas id="casualtiesChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Line Chart -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="">Hospitalized People</h4>
+              </div>
+              <div class='card-body'>
+                <canvas id="hospitalizedChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div class="card">
             <div class="card-header">
               <h4 class="card-title">Reported Occurances</h4>
@@ -94,16 +126,13 @@ require_once "func/login.php";
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div class="card">
             <div class="card-header">
               <h4 class="card-title">Reported Severity/Occurances</h4>
             </div>
             <div class="card-body">
-            <span id="graph-y">severity</span>
+              <span id="graph-y">severity</span>
               <canvas id="sever_occur" width="400" height="200"></canvas>
               <span id="graph-x">occurance</span>
             </div>
@@ -131,12 +160,130 @@ require_once "func/login.php";
         ?>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card mx-4 p-0">
+          <h4 class="px-3">Severity Lookup Table</h4>
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>Severity Level</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Level 1</td>
+                <td>Minimal impact, easily manageable.</td>
+              </tr>
+              <tr>
+                <td>Level 2</td>
+                <td>Minor impact, requires limited resources.</td>
+              </tr>
+              <tr>
+                <td>Level 3</td>
+                <td>Moderate impact, manageable with some effort.</td>
+              </tr>
+              <tr>
+                <td>Level 4</td>
+                <td>Significant impact, requires substantial resources.</td>
+              </tr>
+              <tr>
+                <td>Level 5</td>
+                <td>Major impact, affecting a large area or population.</td>
+              </tr>
+              <tr>
+                <td>Level 6</td>
+                <td>Severe impact, causing widespread disruption.</td>
+              </tr>
+              <tr>
+                <td>Level 7</td>
+                <td>Critical impact, posing a significant threat.</td>
+              </tr>
+              <tr>
+                <td>Level 8</td>
+                <td>Catastrophic impact, causing widespread devastation.</td>
+              </tr>
+              <tr>
+                <td>Level 9</td>
+                <td>Emergency impact, requiring immediate response to prevent further loss.</td>
+              </tr>
+              <tr>
+                <td>Level 10</td>
+                <td>Extreme impact, causing widespread destruction and loss of life.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     <?php
     include_once "included/footer.php";
     ?>
   </div>
 </div>
 
+<script>
+  // Simulate an API response with random data
+  const casualtiesData = {
+    men: Math.floor(Math.random() * 500),
+    women: Math.floor(Math.random() * 500),
+    children: Math.floor(Math.random() * 500)
+  };
+
+  const hospitalizedData = {
+    men: Math.floor(Math.random() * 1000),
+    women: Math.floor(Math.random() * 1000),
+    children: Math.floor(Math.random() * 1000)
+  };
+
+  // Bar Chart - Total Number of Casualties
+  const casualtiesCtx = document.getElementById('casualtiesChart').getContext('2d');
+  new Chart(casualtiesCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Men', 'Women', 'Children'],
+      datasets: [{
+        label: 'Total Casualties',
+        data: [casualtiesData.men, casualtiesData.women, casualtiesData.children],
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  // Line Chart - Hospitalized People
+  const hospitalizedCtx = document.getElementById('hospitalizedChart').getContext('2d');
+  new Chart(hospitalizedCtx, {
+    type: 'line',
+    data: {
+      labels: ['Men', 'Women', 'Children'],
+      datasets: [{
+        label: 'Total Hospitalized',
+        data: [hospitalizedData.men, hospitalizedData.women, hospitalizedData.children],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+        fill: true
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
 <?php
 include_once "included/scripts.php";
 include_once "included/charts.php";

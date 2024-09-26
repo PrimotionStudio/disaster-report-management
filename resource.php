@@ -73,6 +73,16 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <div class="input-group">
+                                                <span class="input-group-text">Location*</span>
+                                                <input type="text" class="form-control" placeholder="State" name="state" required>
+                                                <input type="text" class="form-control" placeholder="LGA" name="lga" required>
+                                                <input type="text" class="form-control" placeholder="Street/Town" name="street" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Quantity</label>
                                                 <input type="number" class="form-control" name="quantity">
@@ -118,6 +128,9 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                                             Resource Type
                                         </th>
                                         <th>
+                                            Location
+                                        </th>
+                                        <th>
                                             Quantity
                                         </th>
                                         <th>
@@ -129,7 +142,7 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $select_response = "SELECT * FROM resource";
+                                        $select_response = "SELECT * FROM resource ORDER BY id DESC";
                                         $query_response = mysqli_query($con, $select_response);
                                         $i = 1;
                                         while ($get_response = mysqli_fetch_assoc($query_response)) :
@@ -141,6 +154,18 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                                                 </td>
                                                 <td>
                                                     <?= $get_response["type"] ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if (strstr($get_response["location"], " _location_ ")) {
+                                                        $location = explode(" _location_ ", $get_response["location"]);
+                                                        echo $location[0] . "<br/>";
+                                                        echo $location[1] . "<br/>";
+                                                        echo $location[2] . "<br/>";
+                                                    } else {
+                                                        echo $get_response["location"];
+                                                    }
+                                                    ?>
                                                 </td>
                                                 <td>
                                                     <?= $get_response["quantity"] ?>
