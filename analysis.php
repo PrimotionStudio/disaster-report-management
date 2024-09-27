@@ -17,7 +17,11 @@ Coded by www.creative-tim.com
 require_once "required/session.php";
 require_once "required/sql.php";
 require_once "required/validate.php";
-const PAGE_TITLE = "Analysis - High Level Oversight";
+if ($get_user["account_type"] == ACCOUNT_TYPES[0]) {
+  define('PAGE_TITLE', "High Level Oversight");
+} else {
+  define('PAGE_TITLE', "Monitor Real-Time Data");
+}
 include_once "included/head.php";
 require_once "included/alert.php";
 

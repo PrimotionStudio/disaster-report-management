@@ -11,14 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // }
     // $get_disaster = mysqli_fetch_assoc($query_disaster);
     // $disaster = $get_disaster["disaster"];
-	$description = $_POST["description"];
-	$insert_response = "INSERT INTO response (user_id, disaster_id, description) VALUES ('$user_id', '$disaster_id', '$description')";
-	if (mysqli_query($con, $insert_response)) {
-		$_SESSION["alert"] = "Response Allocated";
-		header("location: response?id=$disaster_id");
-	} else {
-		$_SESSION["alert"] = "Error while allocating response";
-		header("location: response?id=$disaster_id");
-	}
-	exit;
+    $men = $_POST["men"];
+    $women = $_POST["women"];
+    $children = $_POST["children"];
+    $quantity = $_POST["quantity"];
+    $evacuation = $_POST["evacuation"];
+    $mitigation = $_POST["mitigation"];
+    $insert_response = "INSERT INTO response (user_id, disaster_id, men, women, children, quantity, evacuation, mitigation) VALUES ('$user_id', '$disaster_id', '$men', '$women', '$children', '$quantity', '$evacuation', '$mitigation')";
+    if (mysqli_query($con, $insert_response)) {
+        $_SESSION["alert"] = "Response Effort Saved";
+        header("location: response?id=$disaster_id");
+    } else {
+        $_SESSION["alert"] = "Error while saving response effort";
+        header("location: response?id=$disaster_id");
+    }
+    exit;
 }

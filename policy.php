@@ -58,7 +58,7 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Policy Description</label>
-                                                <textarea class="form-control textarea" name="description" placeholder=""></textarea>
+                                                <textarea class="form-control textarea" id='content' name="description" placeholder=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -76,54 +76,28 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
             endif;
             ?>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Policies</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="text-primary">
-                                        <th>s/n</th>
-                                        <th>
-                                            Title
-                                        </th>
-                                        <th>
-                                            Description
-                                        </th>
-                                        <th class="text-right">
-                                            Date/Time
-                                        </th>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $select_response = "SELECT * FROM policy";
-                                        $query_response = mysqli_query($con, $select_response);
-                                        $i = 1;
-                                        while ($get_response = mysqli_fetch_assoc($query_response)) :
-                                        ?>
-                                            <tr>
-                                                <td><?= $i ?></td>
-                                                <td>
-                                                    <?= $get_response["title"] ?>
-                                                </td>
-                                                <td>
-                                                    <?= $get_response["description"] ?>
-                                                </td>
-                                                <td class="text-right">
-                                                    <?= date('d, M Y - h:iA', strtotime($get_response["datetime"])) ?>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                            $i++;
-                                        endwhile;
-                                        ?>
-                                    </tbody>
-                                </table>
+                <div class="col-md-10 mx-auto">
+                    <?php
+                    $select_response = "SELECT * FROM policy";
+                    $query_response = mysqli_query($con, $select_response);
+                    $i = 1;
+                    while ($get_response = mysqli_fetch_assoc($query_response)) :
+                        $select_author = "SELECT * FROM users WHERE id='" . $get_response["user_id"] . "'";
+                        $query_author = mysqli_query($con, $select_author);
+                        $get_author = mysqli_fetch_assoc($query_author);
+                    ?>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $get_response["title"] ?></h5>
+                                <p class="card-text text-muted">by <strong><?= ucfirst($get_author["username"]) ?></strong> | <small><?= date('M d, Y - h:i A', strtotime($get_response["datetime"])) ?></small></p>
+                                <p class="card-text"><?= $get_response["description"] ?></p>
                             </div>
                         </div>
-                    </div>
+
+                    <?php
+                        $i++;
+                    endwhile;
+                    ?>
                 </div>
             </div>
         </div>
@@ -133,6 +107,10 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
     </div>
 </div>
 
+<script src="ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('content');
+</script>
 <?php
 include_once "included/scripts.php";
 include_once "included/charts.php";

@@ -65,6 +65,35 @@ while ($get_response = mysqli_fetch_assoc($query_response)) {
             </div>
           </div>
         </div>
+
+
+        <div class="col-lg-9 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row align-items-center">
+                <div class="col-6">
+                  <div class="numbers" style='text-align:start'>
+                    <p class="card-category">Username: <?= $get_user["username"] ?></p>
+                    <p class="card-category">Account Type: <?= $get_user["account_type"] ?></p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="numbers">
+                    <p class="card-category">Email: <span style='text-transform: lowercase'><?= strtolower($get_user["email"]) ?></span></p>
+                    <p class="card-category">Phone: <?= $get_user["phone"] ?></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-refresh"></i>
+                Updated Now
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">

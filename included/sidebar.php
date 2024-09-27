@@ -57,7 +57,7 @@
 				<li class="<?php echo (file_name() === "analysis") ? "active" : ""; ?>">
 					<a href="analysis">
 						<i class="nc-icon nc-chart-bar-32"></i>
-						<p>High-Level Oversight</p>
+						<p><?= $get_user["account_type"] == ACCOUNT_TYPES[0] ? "High-Level Oversight" : "Monitor Real-Time Data" ?></p>
 					</a>
 				</li>
 			<?php
@@ -66,7 +66,7 @@
 			<li class="<?php echo (file_name() === "policy") ? "active" : ""; ?>">
 				<a href="policy">
 					<i class="nc-icon nc-paper"></i>
-					<p>Policy</p>
+					<p>Policy Making</p>
 				</a>
 			</li>
 			<li class="<?php echo (file_name() === "resource") ? "active" : ""; ?>">
