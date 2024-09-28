@@ -62,17 +62,28 @@
 				</li>
 			<?php
 			endif;
+			if ($get_user["account_type"] == ACCOUNT_TYPES[2]) :
 			?>
-			<li class="<?php echo (file_name() === "policy") ? "active" : ""; ?>">
-				<a href="policy">
-					<i class="nc-icon nc-paper"></i>
-					<p>Policy Making</p>
-				</a>
-			</li>
+				<li class="<?php echo (file_name() === "response-effort") ? "active" : ""; ?>">
+					<a href="response-effort">
+						<i class="nc-icon nc-chart-bar-32"></i>
+						<small><?= "Coordinate Response Effort" ?></small>
+					</a>
+				</li>
+			<?php
+			endif;
+			?>
 			<li class="<?php echo (file_name() === "resource") ? "active" : ""; ?>">
 				<a href="resource">
 					<i class="nc-icon nc-ambulance"></i>
 					<p>Resource Allocation</p>
+				</a>
+			</li>
+
+			<li class="<?php echo (file_name() === "policy") ? "active" : ""; ?>">
+				<a href="policy">
+					<i class="nc-icon nc-paper"></i>
+					<p>Policy Making</p>
 				</a>
 			</li>
 			<li class="active-pro">
