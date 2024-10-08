@@ -113,147 +113,150 @@ if ($get_user["account_type"] == ACCOUNT_TYPES[0])
 
             <div class="row">
                 <?php
-
-                $select_all_disasters = "SELECT * FROM disasters ORDER BY id DESC";
-                $query_all_disasters = mysqli_query($con, $select_all_disasters);
-                $all_disasters = [];
-                while ($get_all_disasters = mysqli_fetch_assoc($query_all_disasters)) {
-                    // $all_disasters[] = $get_all_disasters;
-                    $all_disasters[$get_all_disasters["location"]] = $get_all_disasters["disaster"];
-                }
-                $select_all_resource = "SELECT * FROM resource";
-                $query_all_resource = mysqli_query($con, $select_all_resource);
-                $all_resources = [];
-                while ($get_all_resource = mysqli_fetch_assoc($query_all_resource)) {
-                    $all_resources[$get_all_resource["location"]] = $get_all_resource["disaster"];
-                }
+                if ($get_user["account_type"] != ACCOUNT_TYPES[1]) :
+                    $select_all_disasters = "SELECT * FROM disasters ORDER BY id DESC";
+                    $query_all_disasters = mysqli_query($con, $select_all_disasters);
+                    $all_disasters = [];
+                    while ($get_all_disasters = mysqli_fetch_assoc($query_all_disasters)) {
+                        // $all_disasters[] = $get_all_disasters;
+                        $all_disasters[$get_all_disasters["location"]] = $get_all_disasters["disaster"];
+                    }
+                    $select_all_resource = "SELECT * FROM resource";
+                    $query_all_resource = mysqli_query($con, $select_all_resource);
+                    $all_resources = [];
+                    while ($get_all_resource = mysqli_fetch_assoc($query_all_resource)) {
+                        $all_resources[$get_all_resource["location"]] = $get_all_resource["disaster"];
+                    }
                 ?>
-                <div class="col-md-6 mx-auto">
+                    <div class="col-md-6 mx-auto">
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h6 class="card-title">Areas that have received relief material</h>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="text-primary">
-                                        <th>s/n</th>
-                                        <th>
-                                            Disaster
-                                        </th>
-                                        <th>Resource Type</th>
-                                        <th>Quantity</th>
-                                        <th>
-                                            Location
-                                        </th>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $received_location = [];
-                                        foreach ($all_disasters as $location => $disaster) {
-                                            if (array_key_exists($location, $all_resources) && $all_resources[$location] = $disaster) {
-                                                // echo $disaster_id . "<br>";
-                                                $received_location[$disaster] = $location;
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title">Areas that have received relief material</h>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="text-primary">
+                                            <th>s/n</th>
+                                            <th>
+                                                Disaster
+                                            </th>
+                                            <th>Resource Type</th>
+                                            <th>Quantity</th>
+                                            <th>
+                                                Location
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $received_location = [];
+                                            foreach ($all_disasters as $location => $disaster) {
+                                                if (array_key_exists($location, $all_resources) && $all_resources[$location] = $disaster) {
+                                                    // echo $disaster_id . "<br>";
+                                                    $received_location[$disaster] = $location;
+                                                }
                                             }
-                                        }
-                                        $i = 1;
-                                        foreach ($received_location as $disaster => $location) :
-                                            $select_received_locations = "SELECT * FROM resource WHERE disaster='$disaster' && location='$location'";
-                                            $query_received_locations = mysqli_query($con, $select_received_locations);
-                                            $get_received_locations = mysqli_fetch_assoc($query_received_locations);
-                                            $disaster_name = $get_received_locations["disaster"];
-                                        ?>
-                                            <tr>
-                                                <td>
-                                                    <?= $i++ ?>
-                                                </td>
-                                                <td>
-                                                    <?= $disaster_name ?>
-                                                </td>
-                                                <td><?= $get_received_locations["type"] ?></td>
-                                                <td><?= $get_received_locations["quantity"] ?></td>
-                                                <td>
-                                                    <?php
-                                                    if (strstr($location, " _location_ ")) {
-                                                        $location = explode(" _location_ ", $location);
-                                                        echo $location[0] . ", ";
-                                                        echo $location[1] . ", ";
-                                                        echo $location[2] . "";
-                                                    } else {
-                                                        echo $location;
-                                                    }
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                        endforeach;
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            $i = 1;
+                                            foreach ($received_location as $disaster => $location) :
+                                                $select_received_locations = "SELECT * FROM resource WHERE disaster='$disaster' && location='$location'";
+                                                $query_received_locations = mysqli_query($con, $select_received_locations);
+                                                $get_received_locations = mysqli_fetch_assoc($query_received_locations);
+                                                $disaster_name = $get_received_locations["disaster"];
+                                            ?>
+                                                <tr>
+                                                    <td>
+                                                        <?= $i++ ?>
+                                                    </td>
+                                                    <td>
+                                                        <?= $disaster_name ?>
+                                                    </td>
+                                                    <td><?= $get_received_locations["type"] ?></td>
+                                                    <td><?= $get_received_locations["quantity"] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if (strstr($location, " _location_ ")) {
+                                                            $location = explode(" _location_ ", $location);
+                                                            echo $location[0] . ", ";
+                                                            echo $location[1] . ", ";
+                                                            echo $location[2] . "";
+                                                        } else {
+                                                            echo $location;
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            endforeach;
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 mx-auto">
+                    <div class="col-md-6 mx-auto">
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h6 class="card-title">Remaining areas in need of relief materials</h>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="text-primary">
-                                        <th>s/n</th>
-                                        <th>
-                                            Disaster
-                                        </th>
-                                        <th>
-                                            Location
-                                        </th>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $remaining_location = [];
-                                        foreach ($all_disasters as $location => $disaster) {
-                                            if (!array_key_exists($location, $all_resources)) {
-                                                // echo $disaster_id . "<br>";
-                                                $remaining_location[$location] = $disaster;
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title">Remaining areas in need of relief materials</h>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="text-primary">
+                                            <th>s/n</th>
+                                            <th>
+                                                Disaster
+                                            </th>
+                                            <th>
+                                                Location
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $remaining_location = [];
+                                            foreach ($all_disasters as $location => $disaster) {
+                                                if (!array_key_exists($location, $all_resources)) {
+                                                    // echo $disaster_id . "<br>";
+                                                    $remaining_location[$location] = $disaster;
+                                                }
                                             }
-                                        }
-                                        $i = 1;
-                                        foreach ($remaining_location as $location => $disaster) :
-                                        ?>
-                                            <tr>
-                                                <td>
-                                                    <?= $i++ ?>
-                                                </td>
-                                                <td>
-                                                    <?= $disaster ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if (strstr($location, " _location_ ")) {
-                                                        $location = explode(" _location_ ", $location);
-                                                        echo $location[0] . "<br/>";
-                                                        echo $location[1] . "<br/>";
-                                                        echo $location[2] . "<br/>";
-                                                    } else {
-                                                        echo $location;
-                                                    }
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                        endforeach;
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            $i = 1;
+                                            foreach ($remaining_location as $location => $disaster) :
+                                            ?>
+                                                <tr>
+                                                    <td>
+                                                        <?= $i++ ?>
+                                                    </td>
+                                                    <td>
+                                                        <?= $disaster ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                        if (strstr($location, " _location_ ")) {
+                                                            $location = explode(" _location_ ", $location);
+                                                            echo $location[0] . "<br/>";
+                                                            echo $location[1] . "<br/>";
+                                                            echo $location[2] . "<br/>";
+                                                        } else {
+                                                            echo $location;
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            endforeach;
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php
+                endif;
+                ?>
 
             </div>
 

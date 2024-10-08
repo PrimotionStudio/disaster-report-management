@@ -5,7 +5,7 @@
 				<span class="copyright">
 					&copy; <script>
 						document.write(new Date().getFullYear())
-					</script>, Frontend and Backend made with <i class="fa fa-heart heart"></i> by Creative Tim and The Primotion Studio respectively
+					</script>, made with <i class="fa fa-heart heart"></i>
 				</span>
 			</div>
 		</div>

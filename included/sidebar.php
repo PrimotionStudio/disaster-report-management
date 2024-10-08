@@ -76,7 +76,7 @@
 			<li class="<?php echo (file_name() === "resource") ? "active" : ""; ?>">
 				<a href="resource">
 					<i class="nc-icon nc-ambulance"></i>
-					<p>Resource Allocation</p>
+					<p><?= $get_user["account_type"] == ACCOUNT_TYPES[2] ? "Manage Resources" : "Resource Allocation" ?></p>
 				</a>
 			</li>
 

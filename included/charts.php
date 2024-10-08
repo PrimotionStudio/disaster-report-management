@@ -1,5 +1,5 @@
-<!-- <script src="../assets/js/Chart.js">
-</script> -->
+<script src="../assets/js/chartjs.js">
+</script>
 <script>
 	<?php
 	$select_disasters = "SELECT * FROM disasters";

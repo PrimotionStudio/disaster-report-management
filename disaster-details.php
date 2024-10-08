@@ -39,6 +39,7 @@ $get_response = mysqli_fetch_assoc($query_disaster);
 
 require_once "func/disaster-details.php";
 ?>
+<script src="assets/js/Chart.js"></script>
 <div class="wrapper ">
   <?php
   include_once "included/sidebar.php";
@@ -71,6 +72,9 @@ require_once "func/disaster-details.php";
                   </thead>
                   <tbody>
                     <tr>
+                      <td>
+                        <?= $get_response["disaster"] ?>
+                      </td>
                       <td>
                         <?php
                         switch ($get_response["severity"]) {
@@ -111,9 +115,6 @@ require_once "func/disaster-details.php";
                         ?>
                       </td>
                       <td>
-                        <?= $get_response["severity"] ?>
-                      </td>
-                      <td>
                         <?php
                         if (strstr($get_response["location"], " _location_ ")) {
                           $location = explode(" _location_ ", $get_response["location"]);
@@ -152,6 +153,194 @@ require_once "func/disaster-details.php";
                 <div class="row">
                   <div class="col-md-6 pr-1">
                     <div class="form-group">
+                      <!-- <label>Affected Population</label> -->
+                      <canvas id="affectedPopulationChart"></canvas>
+                      <script>
+                        // Generate random values between 0 and 1000 for men, women, and children
+                        const men = Math.floor(Math.random() * 9999);
+                        const women = Math.floor(Math.random() * 9999);
+                        const children = Math.floor(Math.random() * 9999);
+
+                        const ctx = document.getElementById('affectedPopulationChart').getContext('2d');
+                        const populationChart = new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                            labels: ['Men', 'Women', 'Children'],
+                            datasets: [{
+                              label: 'Number of affected population',
+                              data: [men, women, children],
+                              backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                              borderColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                              borderWidth: 1
+                            }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            }
+                          }
+                        });
+                      </script>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-1">
+                    <div class="form-group">
+                      <canvas id="extentDamageChart"></canvas>
+                      <script>
+                        // Generate random values for the data
+                        const housesAffected = Math.floor(Math.random() * 9999); // Number of houses affected
+                        const areaCovered = Math.floor(Math.random() * 9999); // Area covered by damages in square meters
+                        const propertyWorth = Math.floor(Math.random() * 99999); // Worth of properties in dollars
+
+                        const damagetx = document.getElementById('extentDamageChart').getContext('2d');
+                        const damageChart = new Chart(damagetx, {
+                          type: 'bar',
+                          data: {
+                            labels: ['Houses Affected', 'Area Covered (sq meters)', 'Property Worth (₦)'],
+                            datasets: [{
+                              label: 'Damage Statistics',
+                              data: [housesAffected, areaCovered, propertyWorth],
+                              backgroundColor: ['#f94144', '#f3722c', '#f8961e'],
+                              borderColor: ['#d7263d', '#e36414', '#f77f00'],
+                              borderWidth: 1
+                            }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            },
+                            plugins: {
+                              tooltip: {
+                                callbacks: {
+                                  label: function(context) {
+                                    let label = context.dataset.label || '';
+
+                                    if (label) {
+                                      label += ': ';
+                                    }
+                                    label += context.raw;
+                                    if (context.dataIndex === 1) {
+                                      label += ' sq meters'; // Add units for area
+                                    } else if (context.dataIndex === 2) {
+                                      label += ' $'; // Add dollar sign for worth
+                                    }
+                                    return label;
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 pr-1">
+                    <div class="form-group">
+                      <!-- <label>Response Effort</label> -->
+
+                      <?php
+                      $select_response = "SELECT * FROM response WHERE disaster_id='$id' ORDER BY id DESC";
+                      $query_response = mysqli_query($con, $select_response);
+                      if (mysqli_num_rows($query_response) != 0) :
+                        $get_response = mysqli_fetch_assoc($query_response)
+                      ?>
+                        <div class="border p-3 rounded">
+                          <p class="card-text">
+                            <strong>Relief Materials Sent:</strong>
+                            <span class="text-success text-xl"><?= $get_response["quantity"] ?></span>
+                          </p>
+                          <p class="card-text">
+                            <strong>Evacuation Effort:</strong>
+                            <span class="text-info"><?= $get_response["evacuation"] ?></span>
+                          </p>
+                          <p class="card-text">
+                            <strong>Disaster Mitigation Efforts:</strong>
+                            <span class="text-warning"><?= $gt_response["mitigation"] ?></span>
+                          </p>
+                          <p class="card-text">
+                            <strong>People in Critical Condition:</strong>
+                          </p>
+                          <ul>
+                            <li><span class="text-danger">Males:</span> <?= $get_response["men"] ?></li>
+                            <li><span class="text-danger">Females:</span> <?= $get_response["women"] ?></li>
+                            <li><span class="text-danger">Children:</span> <?= $get_response["children"] ?></li>
+                          </ul>
+                        </div>
+                      <?php
+                      endif;
+                      ?>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-1">
+                    <div class="form-group">
+                      <canvas id="casualtiesChart"></canvas>
+                      <script>
+                        // Generate random values for the data
+                        const deaths = Math.floor(Math.random() * 9999); // Number of deaths
+                        const injured = Math.floor(Math.random() * 9999); // Number of injured people
+                        const compensations = Math.floor(Math.random() * 99999); // Compensation amount in dollars
+
+                        const casualtytx = document.getElementById('casualtiesChart').getContext('2d');
+                        const casualtiesChart = new Chart(casualtytx, {
+                          type: 'bar',
+                          data: {
+                            labels: ['Number of Deaths', 'Number of Injured', 'Compensations ($)'],
+                            datasets: [{
+                              label: 'Casualties and Compensation',
+                              data: [deaths, injured, compensations],
+                              backgroundColor: ['#ff4d4d', '#ffbf00', '#36b9cc'],
+                              borderColor: ['#e60000', '#e6ac00', '#2c9faf'],
+                              borderWidth: 1
+                            }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            },
+                            plugins: {
+                              tooltip: {
+                                callbacks: {
+                                  label: function(context) {
+                                    let label = context.dataset.label || '';
+
+                                    if (label) {
+                                      label += ': ';
+                                    }
+                                    label += context.raw;
+                                    if (context.dataIndex === 2) {
+                                      label += ' $'; // Add dollar sign for compensation
+                                    }
+                                    return label;
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        });
+                      </script>
+                      <!-- <label>Casualties and Compensation</label>
+                      <textarea class="form-control textarea" name="casualties" style="max-height: 200px; color: #000; height: 200px;" placeholder="Were the relieve materials enough"><?= $get_response["casualties"] ?></textarea> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="update ml-auto mr-auto">
+                    <!-- <button type="submit" class="btn btn-primary btn-round">Update</button> -->
+                  </div>
+                </div>
+              </form>
+              <!-- <form action="" method="post">
+                <div class="row">
+                  <div class="col-md-6 pr-1">
+                    <div class="form-group">
                       <label>Affected Population</label>
                       <textarea class="form-control textarea" name="affected" style="max-height: 200px; color: #000; height: 200px;" placeholder="Number of people affected"><?= $get_response["affected"] ?></textarea>
                     </div>
@@ -182,7 +371,7 @@ require_once "func/disaster-details.php";
                     <button type="submit" class="btn btn-primary btn-round">Update</button>
                   </div>
                 </div>
-              </form>
+              </form> -->
             </div>
           </div>
         </div>
